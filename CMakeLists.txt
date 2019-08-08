@@ -8,8 +8,8 @@ find_package(Qt5 REQUIRED COMPONENTS Widgets Core network)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 # qt files
-set(project_src_files main.cpp QTcpServerWrapper.cpp Client.cpp)
-set(project_header_files QTcpServerWrapper.h Client.h) # header files that inherts from QObject need to be scanned by MOC
+set(project_src_files main.cpp QTcpServerWrapper.cpp SocketWrapper.cpp Task.cpp)
+set(project_header_files QTcpServerWrapper.h SocketWrapper.h Task.h) # header files that inherts from QObject need to be scanned by MOC
 
 # moc related
 set(CMAKE_AUTOMOC ON)

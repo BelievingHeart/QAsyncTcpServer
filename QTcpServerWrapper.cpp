@@ -4,12 +4,13 @@
 
 #include "QTcpServerWrapper.h"
 #include <QDebug>
-#include "Client.h"
+#include <QThreadPool>
+#include "SocketWrapper.h"
 
 void QTcpServerWrapper::incomingConnection(qintptr handle) {
     // Note: if too many connections are going to setup
     // Note: the client should delete itself after the socket disconnects
-    Client *client = new Client(handle, this);
+    auto *client = new SocketWrapper(handle, this);
 }
 
 void QTcpServerWrapper::startServer() {
@@ -18,4 +19,6 @@ void QTcpServerWrapper::startServer() {
     } else {
         qDebug() << "Server failed starting";
     }
+
+    QThreadPool::globalInstance()->setMaxThreadCount(10);
 }
